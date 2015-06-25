@@ -17,9 +17,9 @@ class PersonController {
         println Person.findAll("""
             FROM Person p
             WHERE p.deactivated = false
-            AND p.role = :roles
+            AND p.role IN (:roles)
         """,
-                [role: [Role.BASIC, Role.MANAGER]]
+                [roles: [Role.BASIC, Role.MANAGER]]
         )
         render "success!"
     }
